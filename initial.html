@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Hackthon Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+
+    <div class="col-md-6" style="height: 100%; padding:0;">
+      <div class="col-md-11 searching-car">
+        <div class="form-rent-container">
+          <div class="form-rent-loader">
+          <div class="loader" id="id_loader2"></div>
+          <div class="cancel-renter">
+            <button type="button" class="btn btn-danger" onclick="cancelRenter()" value="Cancelar">Cancelar</button>
+          </div>
+          </div>
+          <div class="form-rent">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Não estou no local</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Estou no local</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <form>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="addressHereSearch" placeholder="Ponto de encontro" onfocus="geolocate()">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="addressToGoSearch" placeholder="Início da jornada" onfocus="geolocate()">
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group clockpicker">
+                      <input id="commit-hour" type="text" class="form-control" value="18:30">
+                      <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                      </span>
+                    </div>
+                  </div>
+                  <button type="button" onclick="readyToRent()" class="btn btn-primary">Alugar carro</button>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <form>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="addressHereSearch2" placeholder="Início da jornada" onfocus="geolocate()">
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group clockpicker">
+                      <input id="commit-hour2" type="text" class="form-control" value="18:30">
+                      <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                      </span>
+                    </div>
+                  </div>
+                  <button type="button" onclick="readyToRent()" class="btn btn-primary">Alugar carro</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="map" class="col-md-12"></div>
+      </div>
+    </div>
+
+    <div class="col-md-6"  style="height: 100%; padding:0;">
+      <div class="col-md-11 col-md-offset-1 searching-car">
+        <div class="form-rent-container" id="form-rent-container">
+          <div class="form-4rent">
+            <div class="loader" id="id_loader"></div>
+          </div>
+          <div class="car-search">
+            <button type="button" class="btn btn-primary " onclick="carregar()" id="btn-alugar">Procurar carro disponível</button>
+          </div>
+        </div>
+        <div id="map2" class="col-md-12"></div>
+        <!--div class="loader" id="id_loader"></div-->
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDmDKep_q-Axr2IrEQGwNmp3yZfHkbPK8&libraries=places&callback=initMap" async defer></script>
+    <script type="text/javascript" src="clockpicker-gh-pages/dist/bootstrap-clockpicker.min.js"></script>
+    <script src="script.js" ></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ9IyW8PuggSNgtNz-FvR0GSBFsHcqHTU&callback=initMap2" async defer></script> -->
+  </body>
+
+</html>
